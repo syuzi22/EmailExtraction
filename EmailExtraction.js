@@ -7,31 +7,19 @@
         return;
       }
 
-      //const re = /[a-zA-Z.'_%+-]+@softwire.com/g
-      const re = /[a-zA-Z.'_%+-]+@[a-zA-Z]+\.[a-zA-Z.]{2,}/g
-  
-      let matches = data.match(re);
+      const re = /[a-zA-Z.'_%+-]+@(?<domain>[a-zA-Z]+\.[a-zA-Z.]{2,})/g
+      const matches = data.matchAll(re);
+      const dictionary = {};
 
-      let dictionary = {};
-
-      for (let i = 0; i < matches.length; i ++) {
-        let email = matches[i];
-        // katrina_dwain@softwire.com
-        let atIndex = email.indexOf('@');
-        let domain = email.slice(atIndex + 1);
-
+      for (const match of matches) {
+        const domain = match.groups.domain;
         if (dictionary[domain]) {
           dictionary[domain] = dictionary[domain] + 1;
         } else {
           dictionary[domain] = 1
-        }
-
-      }
-
+      }}
 
       console.log(dictionary);
-
-      
 });
      
 
