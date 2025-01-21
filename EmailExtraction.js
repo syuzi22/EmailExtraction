@@ -6,23 +6,12 @@
         console.error('Error reading file:', err);
         return;
       }
-       //console.log('File content:', data);
-     // console.log(data.length);
-     // input = data;
 
-
-      var counter = 0;
-      //const input = data.split(' ');
-   
-      for(var i = 0; i < data.length; i++) {
-        // console.log(input);
-       
-        if ((data.substring(i, (i+13)) == '@softwire.com')) { counter = counter + 1 }
-      }
-       
-      console.log(counter);
+      const re = /[a-zA-Z.'_%+-]+@softwire.com/g
+      let matches = data.match(re);
+      console.log(matches.length);
       
-    });
+});
      
 
 
