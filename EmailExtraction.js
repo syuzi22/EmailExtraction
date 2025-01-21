@@ -19,7 +19,9 @@
           dictionary[domain] = 1
       }}
 
-      console.log(dictionary);
+      const tenMostCommonDomains = Object.entries(dictionary).sort((a, b) => b[1] - a[1]).slice(0, 10).map(val => val[0]);
+
+      console.log(tenMostCommonDomains);
 });
      
 
